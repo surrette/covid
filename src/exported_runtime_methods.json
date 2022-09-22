@@ -1,0 +1,6 @@
+[
+"cwrap",
+"stackAlloc",
+"stackSave",
+"stackRestore"
+]
