@@ -1,0 +1,27 @@
+.mode csv
+.import us-states.csv covidbystateCSV
+.import us-counties.csv covidbycountyCSV
+DROP TABLE IF EXISTS covidbystate;
+DROP TABLE IF EXISTS covidbycounty;
+CREATE TABLE covidbystate(
+  "date" NUMERIC,
+  "state" TEXT,
+  "fips" TEXT,
+  "cases" INTEGER,
+  "deaths" INTEGER
+);
+CREATE TABLE covidbycounty(
+  "date" NUMERIC,
+  "county" TEXT,
+  "state" TEXT,
+  "fips" TEXT,
+  "cases" INTEGER,
+  "deaths" INTEGER
+);
+INSERT INTO covidbystate
+SELECT * from covidbystateCSV;
+INSERT INTO covidbycounty
+SELECT * from covidbycountyCSV;
+DROP TABLE covidbystateCSV;
+DROP TABLE covidbycountyCSV;
+vacuum;
